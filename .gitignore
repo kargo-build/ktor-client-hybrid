@@ -32,4 +32,6 @@ replay_pid*
 
 # Kargo
 dist
-build
+build/**
+
+!build/kargo/**
