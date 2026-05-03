@@ -4,13 +4,14 @@ import co.touchlab.kermit.Logger
 import io.ktor.client.engine.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
+import io.ktor.util.InternalAPI
 
 /**
  * Linux Native implementation of HybridEngine.
  * 
  * Uses CIO for HTTP and libcurl for HTTPS (CIO doesn't support HTTPS on Linux Native).
  */
-@OptIn(io.ktor.utils.io.InternalAPI::class)
+@OptIn(InternalAPI::class)
 actual class HybridEngine actual constructor(
     actual override val config: HybridEngineConfig
 ) : HttpClientEngineBase("ktor-hybrid-linux") {
@@ -51,6 +52,13 @@ actual class HybridEngine actual constructor(
         if (config.forceCio) {
             Logger.d { "Forcing CIO engine (forceCio=true)" }
             return cioEngine
+        }
+
+        // Detect multipart to avoid CIO bug
+        val isMultipart = data.body.contentType?.match(ContentType.MultiPart.Any) == true
+        if (isMultipart) {
+            Logger.d { "Multipart detected, using libcurl engine for stability (Linux Native)" }
+            return curlEngine
         }
 
         // Select based on protocol
