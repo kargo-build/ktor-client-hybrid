@@ -4,7 +4,8 @@ import co.touchlab.kermit.Logger
 import io.ktor.client.engine.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
-import io.ktor.util.InternalAPI
+import io.ktor.http.*
+import io.ktor.utils.io.*
 
 /**
  * Linux Native implementation of HybridEngine.
