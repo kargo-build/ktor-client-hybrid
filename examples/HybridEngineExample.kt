@@ -1,6 +1,6 @@
 package examples
 
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*

@@ -86,7 +86,7 @@ settings:
 The **Hybrid engine** works across all platforms with optimal performance:
 
 ```kotlin
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 import io.ktor.client.*
 
 val client = HttpClient(Hybrid) {
@@ -113,7 +113,7 @@ val httpsResponse = client.get("https://api.example.com/secure")
 If you want to use libcurl for all requests on Linux Native:
 
 ```kotlin
-import build.kargo.ktor.client.native.Native
+import builders.kargo.ktor.client.native.Native
 import io.ktor.client.*
 
 val client = HttpClient(Native) {
@@ -145,7 +145,7 @@ val client = HttpClient(Native) {
 ### Basic Usage
 
 ```kotlin
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*

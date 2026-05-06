@@ -18,7 +18,7 @@ Use the Hybrid engine:
 
 ```kotlin
 // ✅ Works perfectly
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 
 val client = HttpClient(Hybrid)
 val response = client.get("https://api.example.com/data") // Success!
@@ -51,7 +51,7 @@ val response = client.get("https://api.example.com/data") // Success!
    import io.ktor.client.engine.cio.CIO
    
    // After
-   import build.kargo.ktor.client.native.Hybrid
+   import builders.kargo.ktor.client.native.Hybrid
    ```
 
 4. **Update client creation**:
@@ -89,7 +89,7 @@ Use the Native or Hybrid engine:
 
 ```kotlin
 // ✅ Memory-safe, non-blocking
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 
 val client = HttpClient(Hybrid)
 ```
@@ -117,7 +117,7 @@ val client = HttpClient(Hybrid)
    import io.ktor.client.engine.curl.Curl
    
    // After
-   import build.kargo.ktor.client.native.Hybrid
+   import builders.kargo.ktor.client.native.Hybrid
    ```
 
 4. **Update client creation**:
@@ -179,7 +179,7 @@ actual fun createHttpClient() = HttpClient(CIO) {
 
 **linuxX64Main/Client.kt**:
 ```kotlin
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 
 actual fun createHttpClient() = HttpClient(Hybrid) {
     // Only Linux Native needs this library
@@ -198,7 +198,7 @@ val response = client.get("https://api.example.com/data")
 If you're building a Linux-only native application:
 
 ```kotlin
-import build.kargo.ktor.client.native.Hybrid
+import builders.kargo.ktor.client.native.Hybrid
 
 val client = HttpClient(Hybrid)
 val response = client.get("https://api.example.com/data")
